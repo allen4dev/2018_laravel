@@ -3,11 +3,16 @@
 @section('title', $post->title)
 
 @section('content')
-  <h2 class="Detail-title title">{{ $post->title }}</h2>
+  <section class="Detail">
+    <section class="Post">
+      <h2 class="Post-title title">{{ $post->title }}</h2>
+      <a href="#" class="Post-categoryLink">{{ $category->name }}</a>
 
-  <p class="Detail-title">{{ $post->body }}</p>
+      <p class="Post-body">{{ $post->body }}</p>
+    </section>
+  </section>
 
-  <section class="CommentsList">
+  <section class="CommentList">
     @if (count($comments))
       @foreach ($comments as $comment)
         <div class="Comment">

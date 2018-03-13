@@ -10,8 +10,11 @@ class Post extends Model
     'title', 'body', 'user_id'
   ];
 
-  public function comments()
-  {
+  public function comments() {
       return $this->hasMany(Comment::class);
+  }
+
+  public function category() {
+    return $this->belongsTo(Category::class);
   }
 }
