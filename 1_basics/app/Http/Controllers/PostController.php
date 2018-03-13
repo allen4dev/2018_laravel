@@ -13,4 +13,10 @@ class PostController extends Controller
 
         return view('home', compact('posts'));
     }
+
+    public function show(Post $post)
+    {
+        $comments = $post->comments()->get();
+        return view('detail', compact('post', 'comments'));
+    }
 }

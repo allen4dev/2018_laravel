@@ -3,16 +3,22 @@
 @section('title', 'Home')
 
 @section('content')
-  @if (count($posts))
-    @foreach ($posts as $post)
-      <article class="Post">
-        <h2 class="Post-title">{{ $post->title }}</h2>
-        <p class="Post-body">{{ $post->body }}</p>
-      </article>
-    @endforeach
-  @else
-    <p class="Home-message">
-      No posts found
-    </p>
-  @endif
+  <h2 class="title">All Posts</h2>
+  <section class="PostList">
+    @if (count($posts))
+      @foreach ($posts as $post)
+        <article class="Post">
+          <h3 class="Post-title">
+            <a href="{{route('posts.detail', $post)}}">{{ $post->title }}</a>
+          </h3>
+          <p class="Post-body">{{ $post->body }}</p>
+        </article>
+        <hr>
+      @endforeach
+    @else
+      <p class="Home-message">
+        No posts found
+      </p>
+    @endif
+  </section>
 @endsection

@@ -11,4 +11,5 @@
 |
 */
 
-Route::get('/', 'PostController@index');
+Route::get('/', 'PostController@index')->name('home');
+Route::get('/posts/{post}', 'PostController@show')->name('posts.detail');
