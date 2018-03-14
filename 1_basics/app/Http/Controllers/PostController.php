@@ -16,8 +16,9 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $category = $post->category()->first();
-        $comments = $post->comments()->get();
-        return view('detail', compact('post', 'comments', 'category'));
+        $category = $post->category;
+        $comments = $post->comments;
+
+        return view('detail', compact('post'));
     }
 }
