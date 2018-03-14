@@ -14,5 +14,6 @@
 Route::get('/', 'PostController@index')->name('home');
 Route::get('/posts/create', 'PostController@create')->name('posts.create');
 Route::get('/posts/{post}', 'PostController@show')->name('posts.detail');
-
 Route::post('/posts', 'PostController@store')->name('posts.store');
+
+Route::post('/posts/{post}/comments', 'CommentController@store')->name('comments.store');

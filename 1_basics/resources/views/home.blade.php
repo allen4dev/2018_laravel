@@ -11,7 +11,7 @@
           <h3 class="Post-title">
             <a href="{{route('posts.detail', $post)}}">{{ $post->title }}</a>
           </h3>
-          <span>{{ $post->created_at }}</span>
+          <span>{{ $post->created_at->toFormattedDateString() }}</span>
           <p class="Post-body">{{ $post->body }}</p>
         </article>
         <hr>
