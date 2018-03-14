@@ -8,7 +8,17 @@
 </head>
 <body>
   <header class="Header">
-    <h1 class="Header-title">Laravel Basics</h1>
+    <h1 class="Header-title">
+      <a href="{{ route('home') }}">Laravel Basics</a>
+    </h1>
+
+    <nav class="Navigation">
+      <ul class="Navigation-list">
+        <li class="Navigation-item">
+          <a href="{{ route('posts.create') }}" class="Navigation-link">Create a new post</a>
+        </li>
+      </ul>
+    </nav>
   </header>
 
   <section class="Content">
