@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
-    //
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function artist()
+    {
+        return $this->belongsTo(Artist::class);
+    }
 }
