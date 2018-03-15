@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 
-use App\Artist;
 
 class ArtistsTableSeeder extends Seeder
 {
@@ -13,6 +12,6 @@ class ArtistsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Artist::class, 10)->create();
+        factory(App\Artist::class, 10)->create();
     }
 }
