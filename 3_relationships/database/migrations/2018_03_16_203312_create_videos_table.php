@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlbumSongTable extends Migration
+class CreateVideosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateAlbumSongTable extends Migration
      */
     public function up()
     {
-        Schema::create('album_song', function (Blueprint $table) {
+        Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
-            // use attach method to add songs to the album
-            // $album->songs()->save($songId);
-            $table->integer('album_id');
-            $table->integer('song_id');
+            $table->string('title');
+            $table->string('url');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateAlbumSongTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('album_song');
+        Schema::dropIfExists('videos');
     }
 }
