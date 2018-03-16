@@ -13,8 +13,19 @@ class Category extends Model
     // }
 
     // hasManyThrough (Category - Artist - Song)
+    // public function songs()
+    // {
+    //     return $this->hasManyThrough(Song::class, Artist::class);
+    // }
+
+    // Many to Many Polymorphic relationship
     public function songs()
     {
-        return $this->hasManyThrough(Song::class, Artist::class);
+        return $this->morphedByMany(Song::class, 'categorizable');
+    }
+
+    public function videos()
+    {
+        return $this->morphedByMany(Video::class, 'categorizable');
     }
 }
