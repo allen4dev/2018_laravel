@@ -12,3 +12,6 @@
 */
 
 Route::get('/', 'PostController@index')->name('home');
+Route::get('/posts', function () {
+  return App\Post::paginate(20);
+});
