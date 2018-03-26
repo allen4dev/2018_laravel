@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCreateAccount;
 
 use App\User;
 
@@ -18,15 +19,8 @@ class RegisterController extends Controller
         return view('register.create');
     }
 
-    public function store()
+    public function store(StoreCreateAccount $request)
     {
-        // validate the request
-        $this->validate(request(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed|min:6'
-        ]);
-
         // create the user
         $user = User::create([
             'name' => request()->name,
