@@ -1,7 +1,10 @@
 @extends('layout')
 
 @section('content')
-  <pre>
-    {{ var_dump(auth()->user()) }}
-  </pre>
+  @if (Session::has('message'))
+    <p class="welcome">{{ Session::get('message') }}</p>
+  @endif
+
+  <h>{{ auth()->user()->name }}</h>
+  <h2>{{ auth()->user()->email }}</h2>
 @endsection

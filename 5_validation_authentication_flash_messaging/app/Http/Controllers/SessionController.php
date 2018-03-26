@@ -24,8 +24,10 @@ class SessionController extends Controller
         ]);
 
         if (!auth()->attempt(['email' => request()->email, 'password' => request()->password ])) {
-            return redirect()->home();
+            return redirect()->login();
         }
+
+        session()->flash('message', 'Welcome back');
 
         return redirect()->intended('/');
     }
