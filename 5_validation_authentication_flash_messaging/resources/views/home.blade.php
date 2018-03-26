@@ -1,5 +1,7 @@
 @extends('layout')
 
 @section('content')
-  Homepage comes here
+  <pre>
+    {{ var_dump(auth()->user()) }}
+  </pre>
 @endsection

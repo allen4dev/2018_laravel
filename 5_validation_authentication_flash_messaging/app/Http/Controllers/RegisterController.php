@@ -8,6 +8,11 @@ use App\User;
 
 class RegisterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     public function create()
     {
         return view('register.create');
@@ -19,7 +24,7 @@ class RegisterController extends Controller
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:6'
+            'password' => 'required|confirmed|min:6'
         ]);
 
         // create the user
@@ -33,6 +38,6 @@ class RegisterController extends Controller
         auth()->login($user);
 
         // redirect to home
-        return redirect()->home();
+        return redirect('/');
     }
 }

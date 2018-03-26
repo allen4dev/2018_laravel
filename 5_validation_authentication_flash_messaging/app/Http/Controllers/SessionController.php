@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => ['destroy']]);
+    }
+
     public function create()
     {
         return view('session.create');
@@ -13,9 +18,6 @@ class SessionController extends Controller
 
     public function store()
     {
-        var_dump(request()->email);
-        var_dump(request()->password);
-
         $this->validate(request(), [
             'email' => 'required',
             'password' => 'required|min:6',
@@ -25,7 +27,7 @@ class SessionController extends Controller
             return redirect()->home();
         }
 
-        return redirect()->intended('home');
+        return redirect()->intended('/');
     }
 
     public function destroy()
