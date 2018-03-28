@@ -13,9 +13,6 @@ class SessionController extends Controller
 
     public function store()
     {
-        var_dump(request()->email);
-        var_dump(request()->password);
-
         $this->validate(request(), [
             'email' => 'required',
             'password' => 'required|min:6',
