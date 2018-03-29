@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => ['destroy']]);
+    }
+
     public function create()
     {
         return view('session.create');
@@ -19,10 +24,12 @@ class SessionController extends Controller
         ]);
 
         if (!auth()->attempt(['email' => request()->email, 'password' => request()->password ])) {
-            return redirect()->home();
+            return redirect()->login();
         }
 
-        return redirect()->intended('home');
+        session()->flash('message', 'Welcome back');
+
+        return redirect()->intended('/');
     }
 
     public function destroy()

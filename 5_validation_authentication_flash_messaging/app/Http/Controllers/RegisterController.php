@@ -3,25 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCreateAccount;
 
 use App\User;
 
 class RegisterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     public function create()
     {
         return view('register.create');
     }
 
-    public function store()
+    public function store(StoreCreateAccount $request)
     {
-        // validate the request
-        $this->validate(request(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:6'
-        ]);
-
         // create the user
         $user = User::create([
             'name' => request()->name,
@@ -33,6 +32,6 @@ class RegisterController extends Controller
         auth()->login($user);
 
         // redirect to home
-        return redirect()->home();
+        return redirect('/');
     }
 }
