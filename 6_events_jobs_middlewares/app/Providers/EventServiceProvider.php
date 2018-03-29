@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserWasBanned' => [
             'App\Listeners\SendNotification',
         ],
+        'App\Events\PostWasCreated' => [
+            'App\Listeners\LogPostInfo',
+        ],
     ];
 
     /**

@@ -43,3 +43,19 @@ Route::get('/dashboard', ['middleware' => ['auth'], function () {
 Route::get('/courses', ['middleware' => ['auth', 'subscribed'], function () {
     dd('This page can be viewed by logged in users, but also need to be subscribed.');
 }])->name('courses');
+
+Route::get('/posts/create', function () {
+    return view('posts.create');
+});
+
+Route::post('/posts', ['middlewares' => ['auth'], function () {
+    $post = \App\Post::create([
+        'title' => request()->title,
+        'body' => request()->body,
+        'user_id' => auth()->id(),
+    ]);
+
+    event(new \App\Events\PostWasCreated($post));
+
+    return redirect('/');
+}]);
