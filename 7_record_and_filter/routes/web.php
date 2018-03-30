@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostController@index');
+Route::get('/posts/{post}', 'PostController@show');
+
+Route::get('/comments/{comment}/edit', 'CommentController@edit')->name('comments.edit');
