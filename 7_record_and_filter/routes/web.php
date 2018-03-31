@@ -17,3 +17,15 @@ Route::get('/posts/{post}', 'PostController@show');
 
 Route::get('/comments/{comment}/edit', 'CommentController@edit')->name('comments.edit');
 Route::put('/comments/{comment}/edit', 'CommentController@update');
+
+Route::get('/login', function () {
+  $user = \App\User::forceCreate([
+    'name' => 'allen4dev',
+    'email' => 'allen4dev@gmail.com',
+    'password' => 'secret',
+  ]);
+
+  auth()->login($user);
+
+  return redirect('/');
+});

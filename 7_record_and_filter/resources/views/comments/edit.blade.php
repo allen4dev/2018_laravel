@@ -4,7 +4,7 @@
     <form method="POST" action="/comments/{{$comment->id}}/edit">
       @csrf
       <input type="hidden" name="_method" value="PUT">
-      
+
       <div>
         <label>Body:</label>
         <div>
