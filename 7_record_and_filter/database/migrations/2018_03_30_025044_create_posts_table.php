@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->integer('likes');
+            $table->enum('category', ['laravel', 'react']);
             $table->timestamps();
         });
     }
