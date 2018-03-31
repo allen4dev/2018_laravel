@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Filters\QueryFilters;
+
 class Post extends Model
 {
-    public static function scopeFilter($query, $filters)
+    public static function scopeFilter($query, QueryFilters $filters)
     {
         return $filters->apply($query);
     }
