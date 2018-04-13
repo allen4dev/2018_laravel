@@ -20,6 +20,11 @@ class ThreadController extends Controller
         return view('home', compact('threads'));
     }
 
+    public function show(Thread $thread)
+    {
+        return view('threads.detail', compact('thread'));
+    }
+
     public function create()
     {
         return view('threads.create');

@@ -18,7 +18,11 @@
                         <ul class="list-group">
                             @forelse ($threads as $thread)
                                 <li class="list-group-item">
-                                    <h2>{{ $thread->title }}</h2>
+                                    <h2>
+                                        <a href="/threads/{{ $thread->id }}">
+                                            {{ $thread->title }}
+                                        </a>
+                                    </h2>
                                     <p>{{ $thread->body }}</p>
                                 </li>
                             @empty
