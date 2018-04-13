@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ThreadController@index');
+Route::get('/threads/create', 'ThreadController@create');
+
+Route::post('/threads', 'ThreadController@store');

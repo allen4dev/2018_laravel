@@ -20,7 +20,7 @@ class ThreadTest extends TestCase
 
         $this->assertInstanceOf(User::class, $thread->user);
     }
-    
+
     /** @test */
     public function it_has_replies()
     {
@@ -31,14 +31,17 @@ class ThreadTest extends TestCase
     /** @test */
     public function it_can_add_a_reply()
     {
-        // Given
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+
+
         $thread = factory(Thread::class)->create();
-        // When
+
         $thread->addReply([
             'body' => 'Foo',
-            'user_id' => 1,
+            'user_id' => auth()->id(),
         ]);
-        // Then
+
         $this->assertCount(1, $thread->replies);
     }
 }
