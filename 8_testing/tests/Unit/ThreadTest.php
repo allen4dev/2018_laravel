@@ -18,7 +18,6 @@ class ThreadTest extends TestCase
     {
         $thread = factory(Thread::class)->create();
 
-
         $this->assertInstanceOf(User::class, $thread->user);
     }
     
@@ -27,5 +26,19 @@ class ThreadTest extends TestCase
     {
         $thread = factory(Thread::class)->create();
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $thread->replies);
+    }
+
+    /** @test */
+    public function it_can_add_a_reply()
+    {
+        // Given
+        $thread = factory(Thread::class)->create();
+        // When
+        $thread->addReply([
+            'body' => 'Foo',
+            'user_id' => 1,
+        ]);
+        // Then
+        $this->assertCount(1, $thread->replies);
     }
 }
